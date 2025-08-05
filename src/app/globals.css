@@ -1,0 +1,148 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --background: 0 0% 100%;
+  --foreground: 222.2 84% 4.9%;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: 222.2 84% 4.9%;
+    --foreground: 210 40% 98%;
+  }
+}
+
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+body {
+  color: rgb(var(--foreground));
+  background: linear-gradient(
+      to bottom,
+      transparent,
+      rgb(var(--background))
+    )
+    rgb(var(--background));
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #c1c1c1;
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #a8a8a8;
+}
+
+/* Video element styling */
+video {
+  max-width: 100%;
+  height: auto;
+  border-radius: 8px;
+}
+
+/* Custom button focus styles */
+.focus-ring {
+  @apply focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2;
+}
+
+/* Loading animation */
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.animate-spin {
+  animation: spin 1s linear infinite;
+}
+
+/* File upload styles */
+.file-upload-zone {
+  @apply border-2 border-dashed border-gray-300 rounded-lg p-8 text-center hover:border-primary-400 transition-colors;
+}
+
+.file-upload-zone.dragover {
+  @apply border-primary-500 bg-primary-50;
+}
+
+/* Progress bar */
+.progress-bar {
+  @apply w-full bg-gray-200 rounded-full h-2;
+}
+
+.progress-bar-fill {
+  @apply bg-primary-500 h-2 rounded-full transition-all duration-300 ease-out;
+}
+
+/* Video preview container */
+.video-preview-container {
+  @apply relative bg-gray-100 rounded-lg overflow-hidden;
+  aspect-ratio: 1 / 1;
+  max-width: 1024px;
+  max-height: 1024px;
+}
+
+.video-preview-container video {
+  @apply w-full h-full object-contain;
+}
+
+/* Aspect ratio specific containers */
+.aspect-ratio-1-1 { aspect-ratio: 1 / 1; }
+.aspect-ratio-3-4 { aspect-ratio: 3 / 4; }
+.aspect-ratio-9-16 { aspect-ratio: 9 / 16; }
+.aspect-ratio-4-3 { aspect-ratio: 4 / 3; }
+.aspect-ratio-16-9 { aspect-ratio: 16 / 9; }
+
+/* Button variants */
+.btn-primary {
+  @apply bg-primary-600 hover:bg-primary-700 text-white font-medium py-2 px-4 rounded-md transition-colors focus-ring disabled:opacity-50 disabled:cursor-not-allowed;
+}
+
+.btn-secondary {
+  @apply bg-gray-200 hover:bg-gray-300 text-gray-900 font-medium py-2 px-4 rounded-md transition-colors focus-ring disabled:opacity-50 disabled:cursor-not-allowed;
+}
+
+.btn-outline {
+  @apply border border-gray-300 hover:bg-gray-50 text-gray-700 font-medium py-2 px-4 rounded-md transition-colors focus-ring disabled:opacity-50 disabled:cursor-not-allowed;
+}
+
+/* Input styles */
+.input-field {
+  @apply w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-1 focus:ring-primary-500 focus:border-primary-500 disabled:bg-gray-50 disabled:text-gray-500;
+}
+
+.textarea-field {
+  @apply w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-1 focus:ring-primary-500 focus:border-primary-500 disabled:bg-gray-50 disabled:text-gray-500 resize-none;
+}
+
+/* Card styles */
+.card {
+  @apply bg-white rounded-lg shadow-sm border border-gray-200 p-6;
+}
+
+/* Error states */
+.error-text {
+  @apply text-red-600 text-sm mt-1;
+}
+
+.error-border {
+  @apply border-red-300 focus:border-red-500 focus:ring-red-500;
+}
