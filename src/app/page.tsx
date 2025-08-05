@@ -65,7 +65,7 @@ export default function HomePage() {
             Video Reframe
           </h1>
           <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-            Transform your 512×512 videos to different aspect ratios using AI-powered reframing technology
+            Transform your videos to different aspect ratios using AI-powered reframing technology
           </p>
         </div>
 
@@ -85,12 +85,29 @@ export default function HomePage() {
               />
               
               {videoFile && (
-                <div className="mt-4 p-3 bg-green-50 border border-green-200 rounded-md">
-                  <div className="flex items-center text-sm text-green-800">
-                    <svg className="w-4 h-4 mr-2" fill="currentColor" viewBox="0 0 20 20">
-                      <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
-                    </svg>
-                    Video uploaded successfully
+                <div className="mt-4 space-y-3">
+                  <div className="p-3 bg-green-50 border border-green-200 rounded-md">
+                    <div className="flex items-center text-sm text-green-800">
+                      <svg className="w-4 h-4 mr-2" fill="currentColor" viewBox="0 0 20 20">
+                        <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
+                      </svg>
+                      Video uploaded successfully
+                    </div>
+                  </div>
+                  
+                  {/* 512x512 Preview in Left Panel */}
+                  <div className="bg-gray-50 rounded-lg p-4">
+                    <h3 className="text-sm font-medium text-gray-700 mb-2">Original Video</h3>
+                    <div className="w-full h-64 max-w-64 mx-auto">
+                      <video
+                        src={videoFile.url}
+                        className="w-full h-full object-contain bg-black rounded-md"
+                        muted
+                        loop
+                        playsInline
+                        controls
+                      />
+                    </div>
                   </div>
                 </div>
               )}
@@ -157,11 +174,13 @@ export default function HomePage() {
                 Video Preview
               </h2>
               <div className="flex justify-center items-center min-h-[600px]">
-                <VideoPreview
-                  videoUrl={reframedVideoUrl || (videoFile?.url || null)}
-                  aspectRatio={aspectRatio}
-                  className="max-w-full max-h-full"
-                />
+                <div className="w-full max-w-[1024px] max-h-[1024px] mx-auto">
+                  <VideoPreview
+                    videoUrl={reframedVideoUrl || (videoFile?.url || null)}
+                    aspectRatio={aspectRatio}
+                    className="w-full h-full"
+                  />
+                </div>
               </div>
               
               {!videoFile && (
@@ -171,7 +190,7 @@ export default function HomePage() {
                   </svg>
                   <p className="text-lg">Upload a video to see the preview</p>
                   <p className="text-sm text-gray-400 mt-2">
-                    Supported formats: MP4, WebM, MOV (512×512px)
+                    Supported formats: MP4, WebM, MOV (any dimensions)
                   </p>
                 </div>
               )}

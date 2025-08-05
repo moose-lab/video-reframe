@@ -51,7 +51,7 @@ class Settings(BaseSettings):
     FAL_BASE_URL: str = "https://fal.ai"
     
     # Video Processing Constraints
-    MAX_VIDEO_RESOLUTION: tuple = (512, 512)
+    MAX_VIDEO_RESOLUTION: tuple = (4096, 4096)  # Allow much larger videos
     SUPPORTED_ASPECT_RATIOS: List[str] = ["16:9", "9:16", "1:1", "4:3", "3:4"]
     
     class Config:

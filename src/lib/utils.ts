@@ -29,12 +29,12 @@ export function validateVideoFile(file: File): { isValid: boolean; error?: strin
 
 export function validateVideoDimensions(video: HTMLVideoElement): { isValid: boolean; error?: string } {
   const { videoWidth, videoHeight } = video;
-  const { width: requiredWidth, height: requiredHeight } = REQUIRED_VIDEO_DIMENSIONS;
-
-  if (videoWidth !== requiredWidth || videoHeight !== requiredHeight) {
+  
+  // Only validate that video has valid dimensions (not empty)
+  if (videoWidth <= 0 || videoHeight <= 0) {
     return {
       isValid: false,
-      error: `Video must be exactly ${requiredWidth}x${requiredHeight}px. Current video is ${videoWidth}x${videoHeight}px`
+      error: `Invalid video dimensions: ${videoWidth}x${videoHeight}px`
     };
   }
 

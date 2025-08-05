@@ -83,6 +83,13 @@ class VideoValidator:
         """Validate video resolution constraints."""
         max_width, max_height = settings.MAX_VIDEO_RESOLUTION
         
+        # Check for valid dimensions
+        if width <= 0 or height <= 0:
+            raise VideoValidationException(
+                f"Invalid video dimensions: {width}x{height}"
+            )
+        
+        # Check maximum resolution
         if width > max_width or height > max_height:
             raise VideoValidationException(
                 f"Video resolution ({width}x{height}) exceeds maximum allowed resolution ({max_width}x{max_height})"

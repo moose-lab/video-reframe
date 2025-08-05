@@ -154,7 +154,7 @@ export function VideoUpload({
                   Drag and drop or click to browse
                 </p>
                 <p className="text-xs text-gray-400">
-                  Required: 512×512px • Max: {formatFileSize(maxSize)}
+                  Max: {formatFileSize(maxSize)}
                 </p>
                 <p className="text-xs text-gray-400">
                   Formats: {acceptedFormats.map(format => format.split('/')[1].toUpperCase()).join(', ')}
@@ -210,7 +210,7 @@ export function VideoUpload({
               Video Requirements
             </h3>
             <ul className="text-xs text-blue-700 space-y-1">
-              <li>• Video must be exactly 512×512 pixels</li>
+              <li>• Any video dimensions are supported</li>
               <li>• Maximum file size: {formatFileSize(maxSize)}</li>
               <li>• Supported formats: MP4, WebM, MOV</li>
               <li>• Video will be processed and reframed to your chosen aspect ratio</li>
